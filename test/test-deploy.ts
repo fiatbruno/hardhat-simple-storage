@@ -1,11 +1,14 @@
 import { ethers } from "hardhat"
 import { expect, assert } from "chai"
-import {SimpleStorage, SimpleStorage__factory} from "../typechain-types"
+import { SimpleStorage, SimpleStorage__factory } from "../typechain-types"
 
 describe("SimpleStorage", function () {
-    let simpleStorageFactory: SimpleStorage__factory, simpleStorage: SimpleStorage
+    let simpleStorageFactory: SimpleStorage__factory,
+        simpleStorage: SimpleStorage
     beforeEach(async function () {
-        simpleStorageFactory = (await ethers.getContractFactory("SimpleStorage")) as SimpleStorage__factory 
+        simpleStorageFactory = (await ethers.getContractFactory(
+            "SimpleStorage"
+        )) as SimpleStorage__factory
         simpleStorage = await simpleStorageFactory.deploy()
     })
 
