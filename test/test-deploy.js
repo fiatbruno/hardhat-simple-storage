@@ -24,4 +24,26 @@ describe("SimpleStorage", function () {
         const currentValue = await simpleStorage.retrieve()
         assert.equal(currentValue.toString(), expectedValue)
     })
+
+    // Wrote a test for the addPerson() fn but not sure it's working at 100%
+
+    it("Should have a name and favorite number", async function () {
+        const expectedValueName = "John Doe"
+        const expectedValueFavNumber = "2"
+
+        const transactionResponse = await simpleStorage.addPerson(
+            expectedValueName,
+            expectedValueFavNumber
+        )
+        await transactionResponse.wait(1)
+
+        for (let i = 0; i < simpleStorage.people.length; i++) {
+            const person = simpleStorage.people[i]
+            assert.equal(person.name.toString(), expectedValueName)
+            assert.equal(
+                person.favoriteNumber.toString(),
+                expectedValueFavNumber
+            )
+        }
+    })
 })
